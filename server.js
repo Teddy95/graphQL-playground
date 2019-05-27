@@ -1,36 +1,16 @@
-var express = require('express');
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
-
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-	type Query {
-		quoteOfTheDay: String
-		random: Float!
-		rollThreeDice: [Int]
-	}
-`);
-
-// The root provides a resolver function for each API endpoint
-var root = {
-	quoteOfTheDay: () => {
-		return Math.random() < 0.5 ? 'Take it easy' : 'Salvation lies within';
-	},
-	random: () => {
-		return Math.random();
-	},
-	rollThreeDice: () => {
-		return [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6));
-	},
-};
+var express = require('express')
+var graphqlHTTP = require('express-graphql')
+var { Schema } = require('./schema')
+var { RootResolver } = require('./resolvers')
 
 var app = express();
+
 app.use('/api', graphqlHTTP({
-	schema: schema,
-	rootValue: root,
+	schema: Schema,
+	rootValue: RootResolver,
 	graphiql: true,
 }));
 
-app.listen(8080);
+app.listen(8080)
 
-console.log('Running a GraphQL API server at localhost:4000/graphql');
+console.log('Running a GraphQL API server at localhost:8080/api')
