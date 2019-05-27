@@ -5,6 +5,7 @@ const Schema = buildSchema(`
         quoteOfTheDay: String
         random: Float!
         rollThreeDice: [Int]
+        rollDice(numDice: Int!, numSides: Int): [Int]
     }
 `)
 
