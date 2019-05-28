@@ -5,6 +5,11 @@ var { RootResolver } = require('./resolvers')
 
 var app = express();
 
+function loggingMiddleware (req, res, next) {
+	next()
+}
+
+app.use(loggingMiddleware)
 app.use('/api', graphqlHTTP({
 	schema: Schema,
 	rootValue: RootResolver,

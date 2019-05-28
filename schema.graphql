@@ -1,0 +1,12 @@
+type Query {
+	quoteOfTheDay: String
+	random: Float!
+	rollThreeDice: [Int]
+	rollDice(numDice: Int!, numSides: Int): [Int]
+}
+
+type User {
+	id: ID
+	name: String
+	email: String
+}
