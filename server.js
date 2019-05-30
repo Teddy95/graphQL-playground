@@ -1,7 +1,7 @@
 var express = require('express')
 var graphqlHTTP = require('express-graphql')
-var { Schema } = require('./schema')
-var { RootResolver } = require('./resolvers')
+var { Schema } = require('./api/schemas/rootSchema')
+var { RootResolver } = require('./api/resolvers/rootResolver')
 
 var app = express();
 

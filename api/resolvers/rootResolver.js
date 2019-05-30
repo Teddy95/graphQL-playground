@@ -1,3 +1,7 @@
+var { getUser, getUserById } = require('../objects/user')
+// var { getUser } = require('../objects/user')
+// var { getUserById } = require('../objects/user2')
+
 const RootResolver = {
 	authToken: (args) => {
 		var output = '25139c0a0f2c0200f6f1e4fe77608869841bd4e6e54d12bb6d'
@@ -37,21 +41,21 @@ const RootResolver = {
 		return output;
 	},
 	allUser: () => {
-		var output = []
-
-		output.push({ id: 1, name: 'Teddy', email: 'hello@andre.dev' })
-		output.push({ id: 2, name: 'Vita', email: 'vita@andre.dev' })
-		output.push({ id: 3, name: 'Bot', email: 'bot@andre.dev' })
-
-		return output;
+		return getUser().then(value => value)
 	},
 	user: (args) => {
-		return;
+		return getUserById(args).then(value => value[0])
 	},
 	allMedia: () => {
 		return;
 	},
 	media: (args) => {
+		return;
+	},
+	allPages: () => {
+		return;
+	},
+	page: (args) => {
 		return;
 	}
 }

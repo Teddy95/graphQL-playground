@@ -8,6 +8,8 @@ const Schema = buildSchema(`
         user(id: ID, name: String, email: String): User
         allMedia: [Media]
         media(id: ID!): Media
+        allPages: [Page]
+        page(id: ID, slug: String): Page
     }
 
     type Config {
@@ -46,6 +48,14 @@ const Schema = buildSchema(`
         title: String
         file: String!
         mimetype: String!
+    }
+
+    type Page {
+        id: ID!
+        slug: String!
+        title: String!
+        author: User!
+        tags: [String]
     }
 `)
 
