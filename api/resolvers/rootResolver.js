@@ -1,6 +1,5 @@
-var { getUser, getUserById } = require('../objects/user')
-// var { getUser } = require('../objects/user')
-// var { getUserById } = require('../objects/user2')
+var { getUsers, getUserByArgument } = require('../objects/user')
+var { getPages, getPageByArgument } = require('../objects/page')
 
 const RootResolver = {
 	authToken: (args) => {
@@ -41,10 +40,10 @@ const RootResolver = {
 		return output;
 	},
 	allUser: () => {
-		return getUser().then(value => value)
+		return getUsers().then(value => value)
 	},
 	user: (args) => {
-		return getUserById(args).then(value => value[0])
+		return getUserByArgument(args).then(value => value[0])
 	},
 	allMedia: () => {
 		return;
@@ -53,10 +52,10 @@ const RootResolver = {
 		return;
 	},
 	allPages: () => {
-		return;
+		return getPages().then(value => value)
 	},
 	page: (args) => {
-		return;
+		return getUserByArgument(args).then(value => value[0])
 	}
 }
 

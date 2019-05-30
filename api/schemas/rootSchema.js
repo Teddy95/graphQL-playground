@@ -4,9 +4,9 @@ const Schema = buildSchema(`
     type Query {
         authToken(name: String!, password: String!): String!
         config: Config!
-        allUser: [User]
+        allUsers: [User]
         user(id: ID, name: String, email: String): User
-        allMedia: [Media]
+        allMedias: [Media]
         media(id: ID!): Media
         allPages: [Page]
         page(id: ID, slug: String): Page

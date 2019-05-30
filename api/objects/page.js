@@ -1,6 +1,7 @@
 var mysql = require('mysql')
+var { getUserByArgument } = require('./user')
 
-const getUsers = () => {
+const getPages = () => {
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
 		var con = mysql.createConnection({
@@ -10,24 +11,30 @@ const getUsers = () => {
 		  database: "magic"
 		})
 
-		var sql = "SELECT * FROM `dbprefix_users`"
+		var sql = "SELECT * FROM `dbprefix_pages`"
 
 		con.query(sql, (err, result, fields) => {
 			var output = []
 			if (err) reject(err)
 
 			result.forEach(row => {
-				output.push({
+				var outputRecord = {
 					id: row.id,
-					name: row.username,
-					email: row.email,
-					image: null,
-					usergroup: {
-						id: row.usergroup,
-						name: 'LoremIpsum'
-					}
+					slug: row.slug,
+					title: row.title,
+					author: null,
+					tags: []
+				}
+
+				getUserByArgument({ id: row.author }).then(value => {
+					outputRecord.author = value[0]
 				})
+
+				output.push(outputRecord)
+				console.log(outputRecord)
 			})
+
+			console.log(output)
 
 			resolve(output)
 		})
@@ -36,7 +43,7 @@ const getUsers = () => {
 	})
 }
 
-const getUserByArgument = (args) => {
+const getPageByArgument = (args) => {
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
 		var con = mysql.createConnection({
@@ -84,4 +91,4 @@ const getUserByArgument = (args) => {
 	})
 }
 
-module.exports = { getUsers, getUserByArgument }
+module.exports = { getPages, getPageByArgument }
