@@ -1,4 +1,4 @@
-var mysql = require('mysql')
+var mysql = require('mysql2')
 var { getUserByArgument } = require('./user')
 
 const getPages = () => {
