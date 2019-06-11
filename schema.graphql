@@ -1,12 +1,8 @@
-type Query {
-	quoteOfTheDay: String
-	random: Float!
-	rollThreeDice: [Int]
-	rollDice(numDice: Int!, numSides: Int): [Int]
-}
+# import Query.* from "./api/schemas/config.graphql"
+# import Query.* from "./api/schemas/media.graphql"
+# import Query.* from "./api/schemas/page.graphql"
+# import Query.* from "./api/schemas/user.graphql"
 
-type User {
-	id: ID
-	name: String
-	email: String
+type Query {
+	authToken(name: String!, password: String!): String!
 }

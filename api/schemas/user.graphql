@@ -1,0 +1,17 @@
+type User {
+	id: ID!
+	name: String!
+	email: String!
+	image: Media
+	usergroups: [Usergroup!]
+}
+
+type Usergroup {
+	id: ID!
+	name: String!
+}
+
+type Query {
+	allUsers: [User]
+	user(id: ID, name: String, email: String): User
+}

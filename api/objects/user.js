@@ -1,76 +1,76 @@
 var mysql = require('mysql2')
 
 const getUsers = () => {
-	var output = []
+	// var output = []
+	//
+	// function fetchQuery (err, result, fields) {
+	// 	// if (err) reject(err)
+	//
+	// 	result.forEach(row => {
+	// 		output.push({
+	// 			id: row.id,
+	// 			name: row.username,
+	// 			email: row.email,
+	// 			image: null,
+	// 			usergroup: {
+	// 				id: row.usergroup,
+	// 				name: 'LoremIpsum'
+	// 			}
+	// 		})
+	// 	})
+	//
+	// 	// resolve(output)
+	// }
+	//
+	// // Create MySQL Connection
+	// var con = mysql.createConnection({
+	//   host: "127.0.0.1",
+	//   user: "root",
+	//   password: "password",
+	//   database: "magic"
+	// })
+	//
+	// var sql = "SELECT * FROM `dbprefix_users`"
+	//
+	// con.query(sql, fetchQuery)
+	//
+	// con.end()
+	//
+	// return output
 
-	function fetchQuery (err, result, fields) {
-		// if (err) reject(err)
-
-		result.forEach(row => {
-			output.push({
-				id: row.id,
-				name: row.username,
-				email: row.email,
-				image: null,
-				usergroup: {
-					id: row.usergroup,
-					name: 'LoremIpsum'
-				}
-			})
+	return new Promise((resolve, reject) => {
+		// Create MySQL Connection
+		var con = mysql.createConnection({
+		  host: "127.0.0.1",
+		  user: "root",
+		  password: "",
+		  database: "magic"
 		})
 
-		// resolve(output)
-	}
+		var sql = "SELECT * FROM `dbprefix_users`"
 
-	// Create MySQL Connection
-	var con = mysql.createConnection({
-	  host: "127.0.0.1",
-	  user: "root",
-	  password: "password",
-	  database: "magic"
+		con.query(sql, (err, result, fields) => {
+			var output = []
+			if (err) reject(err)
+
+			result.forEach(row => {
+				output.push({
+					id: row.id,
+					name: row.username,
+					email: row.email,
+					image: null,
+					usergroup: {
+						id: row.usergroup,
+						name: 'LoremIpsum'
+					}
+				})
+			})
+
+			resolve(output)
+		})
+
+		con.end()
 	})
-
-	var sql = "SELECT * FROM `dbprefix_users`"
-
-	con.query(sql, fetchQuery)
-
-	con.end()
-
-	return output
-
-	// return new Promise((resolve, reject) => {
-	// 	// Create MySQL Connection
-	// 	var con = mysql.createConnection({
-	// 	  host: "127.0.0.1",
-	// 	  user: "root",
-	// 	  password: "password",
-	// 	  database: "magic"
-	// 	})
-	//
-	// 	var sql = "SELECT * FROM `dbprefix_users`"
-	//
-	// 	con.query(sql, (err, result, fields) => {
-	// 		var output = []
-	// 		if (err) reject(err)
-	//
-	// 		result.forEach(row => {
-	// 			output.push({
-	// 				id: row.id,
-	// 				name: row.username,
-	// 				email: row.email,
-	// 				image: null,
-	// 				usergroup: {
-	// 					id: row.usergroup,
-	// 					name: 'LoremIpsum'
-	// 				}
-	// 			})
-	// 		})
-	//
-	// 		resolve(output)
-	// 	})
-	//
-	// 	con.end()
-	// })
 }
 
 const getUserByArgument = (args) => {
@@ -79,7 +79,7 @@ const getUserByArgument = (args) => {
 		var con = mysql.createConnection({
 		  host: "127.0.0.1",
 		  user: "root",
-		  password: "password",
+		  password: "",
 		  database: "magic"
 		})
 

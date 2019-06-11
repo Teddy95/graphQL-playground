@@ -1,0 +1,12 @@
+type Page {
+	id: ID!
+	slug: String!
+	title: String!
+	author: User!
+	tags: [String]
+}
+
+type Query {
+	allPages: [Page]
+	page(id: ID, slug: String): Page
+}

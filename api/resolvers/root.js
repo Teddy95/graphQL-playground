@@ -39,13 +39,13 @@ const RootResolver = {
 
 		return output;
 	},
-	allUser: () => {
+	allUsers: () => {
 		return getUsers().then(value => value)
 	},
 	user: (args) => {
 		return getUserByArgument(args).then(value => value[0])
 	},
-	allMedia: () => {
+	allMedias: () => {
 		return;
 	},
 	media: (args) => {

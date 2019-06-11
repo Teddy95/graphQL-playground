@@ -1,0 +1,11 @@
+type Media {
+	id: ID!
+	title: String
+	file: String!
+	mimetype: String!
+}
+
+type Query {
+	allMedias: [Media]
+	media(id: ID!): Media
+}
