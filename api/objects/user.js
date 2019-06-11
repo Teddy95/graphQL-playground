@@ -1,4 +1,5 @@
 var mysql = require('mysql2')
+var db = require('../../scripts/db')
 
 const getUsers = () => {
 	// var output = []
@@ -24,10 +25,10 @@ const getUsers = () => {
 	//
 	// // Create MySQL Connection
 	// var con = mysql.createConnection({
-	//   host: "127.0.0.1",
-	//   user: "root",
-	//   password: "password",
-	//   database: "magic"
+	// 	host: db.host,
+	// 	user: db.user,
+	// 	password: db.password,
+	// 	database: db.database
 	// })
 	//
 	// var sql = "SELECT * FROM `dbprefix_users`"
@@ -41,10 +42,10 @@ const getUsers = () => {
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
 		var con = mysql.createConnection({
-		  host: "127.0.0.1",
-		  user: "root",
-		  password: "",
-		  database: "magic"
+			host: db.host,
+			user: db.user,
+			password: db.password,
+			database: db.database
 		})
 
 		var sql = "SELECT * FROM `dbprefix_users`"
@@ -77,10 +78,10 @@ const getUserByArgument = (args) => {
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
 		var con = mysql.createConnection({
-		  host: "127.0.0.1",
-		  user: "root",
-		  password: "",
-		  database: "magic"
+			host: db.host,
+			user: db.user,
+			password: db.password,
+			database: db.database
 		})
 
 		var sql = "SELECT * FROM `dbprefix_users` where "

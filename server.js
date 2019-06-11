@@ -4,6 +4,7 @@ var { importSchema } = require('graphql-import')
 var { buildSchema } = require('graphql')
 var gmr = require('graphql-merge-resolvers')
 var { RootResolver } = require('./rootResolver')
+// var { RootResolver } = require('./api/resolvers/root')
 
 var { ApolloServer } = require('apollo-server-express')
 
@@ -17,8 +18,8 @@ resolvers.push(require('./api/resolvers/user.js'))
 
 var resolver = gmr.merge(resolvers)
 
-console.log(resolver)
-console.log(RootResolver)
+// console.log(resolver)
+// console.log(RootResolver)
 
 var app = express()
 
