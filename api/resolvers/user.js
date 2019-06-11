@@ -5,7 +5,7 @@ module.exports = {
 		allUsers() {
 			return getUsers().then(value => value)
 		},
-		user(args) {
+		user(parent, args, context, info) {
 			return getUserByArgument(args).then(value => value[0])
 		}
 	}

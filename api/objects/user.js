@@ -1,4 +1,3 @@
-var mysql = require('mysql2')
 var db = require('../../scripts/db')
 
 const getUsers = () => {
@@ -41,14 +40,9 @@ const getUsers = () => {
 
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
-		var con = mysql.createConnection({
-			host: db.host,
-			user: db.user,
-			password: db.password,
-			database: db.database
-		})
+		var con = db.connect()
 
-		var sql = "SELECT * FROM `dbprefix_users`"
+		var sql = "SELECT * FROM `" + db.prefix + "users`"
 
 		con.query(sql, (err, result, fields) => {
 			var output = []
@@ -77,14 +71,9 @@ const getUsers = () => {
 const getUserByArgument = (args) => {
 	return new Promise((resolve, reject) => {
 		// Create MySQL Connection
-		var con = mysql.createConnection({
-			host: db.host,
-			user: db.user,
-			password: db.password,
-			database: db.database
-		})
+		var con = db.connect()
 
-		var sql = "SELECT * FROM `dbprefix_users` where "
+		var sql = "SELECT * FROM `" + db.prefix + "users` where "
 		var params = []
 
 		if (typeof args.id !== 'undefined') {
