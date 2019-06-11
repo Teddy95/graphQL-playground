@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Teddy95/graphQL-playground#readme",
   "dependencies": {
+    "apollo-server-express": "^2.6.2",
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",

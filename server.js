@@ -5,6 +5,8 @@ var { buildSchema } = require('graphql')
 var gmr = require('graphql-merge-resolvers')
 var { RootResolver } = require('./rootResolver')
 
+var { ApolloServer } = require('apollo-server-express')
+
 var typeDefs = importSchema('./schema.graphql')
 var schema = buildSchema(typeDefs)
 var resolvers = []
@@ -25,11 +27,15 @@ function loggingMiddleware (req, res, next) {
 }
 
 app.use(loggingMiddleware)
-app.use('/api', graphqlHTTP({
-	schema: schema,
-	rootValue: resolver,
-	graphiql: true,
-}));
+// app.use('/api', graphqlHTTP({
+// 	schema: schema,
+// 	rootValue: RootResolver,
+// 	graphiql: true
+// }));
+
+var server = new ApolloServer({ schema, resolver })
+var path = '/api'
+server.applyMiddleware({ app, path })
 
 app.listen(8080)
 
