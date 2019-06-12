@@ -3,10 +3,10 @@ var { getPages, getPageByArgument } = require('../objects/page')
 module.exports = {
 	Query: {
 		allPages() {
-			return getPages().then(value => value)
+			return getPages()
 		},
 		page(parent, args, context, info) {
-			return getUserByArgument(args).then(value => value[0])
+			return getPageByArgument(args)
 		}
 	}
 }
