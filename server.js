@@ -12,7 +12,6 @@ resolvers.push(require('./api/resolvers/page.js'))
 resolvers.push(require('./api/resolvers/user.js'))
 
 var resolver = gmr.merge(resolvers)
-console.log(resolver)
 
 var app = express()
 
