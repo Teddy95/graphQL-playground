@@ -1,8 +1,5 @@
+# import Query.* from "./api/schemas/auth.graphql"
 # import Query.* from "./api/schemas/config.graphql"
 # import Query.* from "./api/schemas/media.graphql"
 # import Query.* from "./api/schemas/page.graphql"
 # import Query.* from "./api/schemas/user.graphql"
-
-type Query {
-	authToken(name: String!, password: String!): String!
-}
